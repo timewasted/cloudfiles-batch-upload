@@ -1,0 +1,3 @@
+[submodule "php-cloudfiles"]
+	path = php-cloudfiles
+	url = git://github.com/rackerlabs/php-cloudfiles.git
