@@ -19,10 +19,20 @@ $defaultContainer = '';
  * You shouldn't have to touch anything below here.
  */
 
-if( empty($baseDir) || empty($username) || empty($apiKey) || empty($defaultContainer) )
-	die("You must set the required variables.\n");
+//if( empty($baseDir) || empty($username) || empty($apiKey) || empty($defaultContainer) )
+//	die("You must set the required variables.\n");
 
-require('./cloudfiles.php');
+if ( file_exists('cloudfiles.php')) {
+    require('cloudfiles.php');
+} elseif ( file_exists('php-cloudfiles/cloudfiles.php')) {
+    require('php-cloudfiles/cloudfiles.php');
+} else {
+    printf("You need to load cloudfiles.php\n");
+    printf("\tsvn submodule init\n");
+    printf("\tsvn submodule update\n");
+    die();
+}
+
 
 // Sanitize base directory
 if( !is_dir($baseDir) )
